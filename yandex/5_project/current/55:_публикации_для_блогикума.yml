@@ -1,0 +1,73 @@
+matches:
+  - trigger: \5__ordering
+    replace: "Не хватает указания сортировки по умолчанию.\n\nДля включения сортировки
+      в моделях-наследниках нужно унаследовать сам класс Meta. \n\n```python\nclass
+      MyModel(models.Model):\n    ...\n    class Meta(BaseModel.Meta):\n        ...\n\
+      ```"
+  - trigger: \5__queryset
+    replace: "Данную фильтрацию стоит оформить как метод кастомного `QuerySet()`,
+      используемого в качестве менеджера модели. [Смотри гайд](https://docs.djangoproject.com/en/5.0/topics/db/managers/#creating-a-manager-with-queryset-methods).\n
+      \nПодобное оформление позволит держать бизнес-логику взаимодействия с моделью
+      отдельно от самих таблиц базы данных.\n\nСозданный `QuerySet()` стоит вынести
+      в отдельный файл с кастомными `QuerySet()`: `querysets.py`\n\nЧтобы работало
+      автодополнение, нужно аннотировать objects:\n\n```python\nobjects: CustomQuerySet
+      = CustomQuerySet().as_manager()\n```"
+  - trigger: \5__admin
+    replace: "Можно знатно кастомизировать отображение моделей в админке, если прописать
+      для каждой `admin.ModelAdmin`.\n\nДля админки пользователя нужно работать с
+      `django.contrib.auth.admin.UserAdmin`."
+  - trigger: \5__user
+    replace: Не хватает регистрации модели пользователя.
+  - trigger: \5__пагинация
+    replace: "Константу пагинации стоит вынести в настройки проекта.\n\n---\n\nЛишнее
+      указание начала среза. Индексация идёт с нуля. Нотация срезов: [start=0:stop=None:step=1]."
+  - trigger: \5__обрезать
+    replace: Т.к. название может быть большим, лучше его срезать. Длину среза стоит
+      объявить константой.
+  - trigger: \5__article
+    replace: Оборачивание тегом `<article>` лучше сделать внутри карточки поста.
+  - trigger: \5__индекс
+    replace: Можно добавить [индекс](https://docs.djangoproject.com/en/5.1/ref/models/options/#indexes)
+      по слагу. Позволит значительно ускорить выборку из базы по данному полю.
+  - trigger: \5__manager
+    replace: "Рекомендую воспользоваться `QuerySet()` и объявить `QuerySet().as_manager()`
+      вместо объявления менеджера напрямую, т.к. кастомный `QuerySet()` позволит применять
+      свои методы к уже сформированным выборкам. Обычный менеджер позволит отфильтровать
+      стандартную выборку, но не позволит делать цепочечные вызовы методов.\n\nНапример:\n\
+      \n```python\n#  Используем менеджер\nclass PostManager(models.Manager):\n  \
+      \  def published(self):\n        return super().get_queryset().filter(is_published=True)\n
+      \nclass Post(models.Model):\n\tobjects = PostManager()\n\n\"\"\"\n>>> Post.objects.all().published()\n
+      Traceback (most recent call last):\n  File \"<console>\", line 1, in <module>\n
+      AttributeError: 'QuerySet' object has no attribute 'published'\n\"\"\"\n\n#
+      Используем QuerySet().as_manager()\nclass PostQuerySet(models.QuerySet):\n \
+      \   def published(self):\n        return self.filter(is_published=False)\nclass
+      Post(models.Model):\n\tobjects = PostQuerySet.as_manager()\n\n\"\"\"\n>>> Post.objects.all().published()\n
+      <PostQuerySet [<Post: Post object (6)>, <Post: Post object (7)>, <Post: Post
+      object (8)>, <Post: Post object (9)>, <Post: Post object (10)>, <Post: Post
+      object (11)>, <Post: Post object (12)>, <Post: Post object (13)>, <Post: Post
+      object (14)>, <Post: Post object (15)>]>\n\"\"\"\n```\n\nЧтобы работало автодополнение,
+      нужно аннотировать objects:\n\n```python\nobjects: CustomQuerySet = CustomQuerySet().as_manager()\n\
+      ```"
+  - trigger: \5__базовая_модель
+    replace: "Стоит вынести повторяющиеся поля в абстрактную модель, от которой наследовать
+      все остальные модели.\n\nЧтобы модель-наследник получила такие же свойства класса
+      `Meta()`, что и абстрактная модель, она должна отнаследовать свой `Meta()` от
+      базовой модели."
+  - trigger: \5__посты_категории
+    replace: "Посты категории достаточно найти по обратному отношению.\n\nФильтрации
+      кастомного `QuerySet()` можно чейнить:\n\n```python\n# querysets.py\nclass CustomQS(models.QuerySet):\n
+      \tdef filtered(self):\n\t\treturn self.filter(published=True)\n\tdef annotated(self):\n
+      \t\treturn self.annotate(count=Count('reverse_relationship'))\n\n#models.py\n
+      class CustomModel(models.Model)\n\tobjects = CustomQS.as_manager()\n\n\tclass
+      Meta:\n\t\tdefault_related_name = \"models\"\n\n#views.py\nclass CustomController(views.ListView)\n
+      \tdef get_queryset(self):\n\t\treturn CustomModel.objects.filtered()\n\tdef
+      get_annotated_and_filtered(self):\n\t\treturn CustomModel.objects.filtered().annotated()\n
+      \tdef filter_reversed_relationship(self, object):\n\t\treturn object.models.filtered()\n\
+      \n```"
+  - trigger: \5__select_related
+    replace: '`.select_related()` также стоит вынести в метод фильтраци кастомного
+      QS.'
+  - trigger: \5__as_manager
+    replace: "Лишний промежуточный класс менеджера. Чтобы объявить `QuerySet()` в
+      качестве менеджера модели, достаточно прописать \n\n```python\nclass CustomModel(...):\n
+      \t...\n\tobjects = CustomQuerySet().as_manager()\n```"

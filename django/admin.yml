@@ -1,0 +1,7 @@
+matches:
+  - trigger: \migrate
+    replace: "python manage.py migrate\n"
+  - trigger: \makemigrations
+    replace: "python manage.py makemigrations\n"
+  - trigger: \runserver
+    replace: "python manage.py runserver\n"

@@ -1,0 +1,31 @@
+matches:
+  - trigger: \8_queryset
+    replace: Так как в классе прописан `.get_queryset()`, объявление артибута `.queryset`
+      является избыточным.
+  - trigger: \8_валидация
+    replace: "Не хватает валидации поля `.following` на уровне API.\n\nМы уже объявили
+      ограничение на уровне базы, однако, не стоит допускать "
+  - trigger: \8_validate
+    replace: "Это общий валидирующий метод, однако, он проверяет только одно поле.
+      Стоит заменить использование общего метода на специализированный метод для данного
+      поля.\n\nТакже рекомендую ознакомиться с [порядком валидации в сериализаторах](https://stackoverflow.com/questions/27591574/order-of-serializer-validation-in-django-rest-framework)."
+  - trigger: \8_пермишен
+    replace: Мы уже прикрутили пермишен к контроллеру, проверка дублируется.
+  - trigger: \8_mixins
+    replace: "ModelViewSet включает в себя лишнюю логику, однако, требуется поддержка только методов GET и POST. [Смотри миксины](https://www.django-rest-framework.org/api-guide/generic-views/#mixins)."
+  - trigger: \8_сортировка_
+    replace: "Не хватает сортировки модели по умолчанию.\n\nОна требуется всем моделям,
+      для которых нужна пагинация."
+  - trigger: \8_urls
+    replace: "Путь `api/` нужно подключать на общем маршрутизаторе приложения (`yatube_api/yatube_api/urls:urlpatterns`).\n
+      \nВерсионирование API (`v1/`) должно происходить на маршрутизаторе API (`yatube_api/api/urls:urlpatterns`)."
+  - trigger: \8_unique
+    replace: 'Не хватает ограничения уникальности подписки и ограничения возможности
+      подписки на самого себя. '
+  - trigger: \8_permission
+    replace: "Чтобы не прописывать проверки руками, можно написать кастомный пермишен,
+      который будет проверять авторство поста.\n\n```python\nclass IsAuthorOrReadOnly(permissions.BasePermission):\n\
+      \    def has_object_permission(self, request, view, obj):\n        ...\n```"
+  - trigger: \8_filter
+    replace: "Допустимы следующие варианты реализации фильтраций:\n\n- Через SearchFilterBackend\n
+      - Через django_filter\n"
