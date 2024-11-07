@@ -1,0 +1,3 @@
+matches:
+  - trigger: \exec_bash
+    replace: "docker exec -it $|$ bash"

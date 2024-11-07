@@ -1,4 +1,3 @@
 matches:
-  # Simple text replacement
   - trigger: \public_ip
     replace: "curl https://ip.me\n"
