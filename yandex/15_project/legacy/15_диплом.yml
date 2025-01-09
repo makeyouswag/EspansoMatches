@@ -25,11 +25,43 @@ matches:
       качестве менеджера модели:\n\n```python\n\nclass CustomQuerySet(models.QuerySet):\n\
       \    def custom_method(self, ...):\n        ...\n\nclass CustomModel(models.Model):\n\
       \    ...\n    objects = CustomQuerySet.as_manager() \n\n```"
-  - trigger: \15_разбить_апи
-    replace: "API можно и нужно разделить на подпакеты, ориентированные на работу
-      с обрабатываемыми сущностями системы.\n\nДолжно получиться следующее:\n\n```\n
-      - api\n    |- recipes\n    |- users\n        |- routers.py\n        |- serializers.py\n\
-      \        |- views.py\n        |- ...\n    |- urls.py\n    ... \n```\nВ таком
+  - trigger: \15_api
+    replace: "
+      API нужно разделить на подпакеты, ориентированные на работу с указанными бизнес-сущностями.\n\n
+      Должно получиться следующее:\n\n
+      ```python\n
+      \"\"\"\n
+      |- api # Слой API: контроллеры и отображение \n 
+      \t|- recipes\n
+      \t\t ...\n
+      \t\t|- routers.py\n
+      \t\t|- serializers.py\n
+      \t\t|- urls.py\n
+      \t\t|- views.py\n
+      \t|- users\n
+      \t\t|- ...\n
+      \t\t|- routers.py\n
+      \t\t|- serializers.py\n
+      \t\t|- urls.py\n
+      \t\t|- views.py\n
+      \t|- ... # И так делать для каждой сущности
+      |- urls.py  # Общий маршрутизатор API\n
+      |- ... # И прочие приблуды для апи \n
+      |- recipes  # Слой моделей\n
+      \t|- apps.py\n
+      \t|- admin.py  # Спорный момент, т.к. админка это однозначно слой отображения\n
+      \t|- models.py\n
+      \t|- validators.py\n
+      \t|- ...
+      |- users  # Слой моделей\n
+      \t|- apps.py\n
+      \t|- admin.py\n
+      \t|- models.py\n
+      \t|- validators.py\n
+      \t|- ...\n
+      \"\"\"\n
+      ```\n
+      В таком
       случае новому разработчику будет значительно проще разобраться в устройстве
       API, а в процессе поддержки приложения части API не склеятся между собой."
   - trigger: \15_вынести_модели

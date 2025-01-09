@@ -75,7 +75,7 @@ matches:
   - trigger: \9_api
     replace: "Рекомендую делить апи по бизнесовому назначению и сшивать всё в маршрутизаторах.\n\n
     ```python\n
-        \"\"\"\n
+    \"\"\"\n
     |-api\n
     \t|-users\n
     \t\t|- serializers.py\n
@@ -89,10 +89,4 @@ matches:
     \turls.py  # И прочие общие моменты\n
     \"\"\"\n
     ```
-    "
-  - trigger: \9_mvc
-    replace: "
-    Нужно ознакомиться с шаблоном [MVC](https://www.geeksforgeeks.org/mvc-design-pattern/).
-
-Для грамотного разделения бизнес-логики проекта можно ознакомиться со [статьёй](https://habr.com/ru/companies/vivid_money/articles/544856/?code=043e22b8b8915d4cbb37b7f7f44f5515&state=gKJi3tpsWxeDpIqbeiUgaNBs&hl=ru), объясняющей недостатки использования стандартной функциональности Django в контексте реализации шаблона MVC, а также посматривать на [стайлгайд джанго](https://github.com/HackSoftware/Django-Styleguide?tab=readme-ov-file#how-to-use-it).
     "

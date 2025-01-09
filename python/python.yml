@@ -1,3 +1,9 @@
 matches:
   - trigger: \freeze
     replace: "pip freeze > requirements.txt\n"
+  - trigger: \debug
+    replace: "loguru.logger.debug(\"$|$\")"
+  - trigger: \desktop
+    replace: "/home/kalitka/Desktop"
+  - trigger: \telegram
+    replace: "/home/kalitka/Downloads/Telegram Desktop"
