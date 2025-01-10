@@ -7,3 +7,7 @@ matches:
     replace: "/home/kalitka/Desktop"
   - trigger: \telegram
     replace: "/home/kalitka/Downloads/Telegram Desktop"
+  - trigger: \open
+    replace: "open(json.loads($|$), 'rb').read()"
+  - trigger: \write
+    replace: "with open($|$f'.json', 'w') as file:\nfile.write(json.dumps(..., ensure_ascii=False))"

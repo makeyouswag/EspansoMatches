@@ -10,7 +10,7 @@ matches:
       \nПодобное оформление позволит держать бизнес-логику взаимодействия с моделью
       отдельно от самих таблиц базы данных.\n\nСозданный `QuerySet()` стоит вынести
       в отдельный файл с кастомными `QuerySet()`: `querysets.py`\n\nЧтобы работало
-      автодополнение, нужно аннотировать objects:\n\n```python\nobjects: CustomQuerySet
+      автодополнение, нужно аннотировать objects:\n\n```python\nobjects: CustomQuerySet | models.QuerySet
       = CustomQuerySet().as_manager()\n```"
   - trigger: \5__admin
     replace: "Можно знатно кастомизировать отображение моделей в админке, если прописать
@@ -46,7 +46,7 @@ matches:
       object (8)>, <Post: Post object (9)>, <Post: Post object (10)>, <Post: Post
       object (11)>, <Post: Post object (12)>, <Post: Post object (13)>, <Post: Post
       object (14)>, <Post: Post object (15)>]>\n\"\"\"\n```\n\nЧтобы работало автодополнение,
-      нужно аннотировать objects:\n\n```python\nobjects: CustomQuerySet = CustomQuerySet().as_manager()\n\
+      нужно аннотировать objects:\n\n```python\nobjects: CustomQuerySet | models.QuerySet = CustomQuerySet().as_manager()\n\
       ```"
   - trigger: \5__базовая_модель
     replace: "Стоит вынести повторяющиеся поля в абстрактную модель, от которой наследовать
