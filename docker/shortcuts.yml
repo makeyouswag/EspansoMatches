@@ -1,3 +1,11 @@
 matches:
   - trigger: \exec_bash
     replace: "docker exec -it $|$ bash"
+  - trigger: \run_mysql
+    replace: "sudo docker run --name mysql --hostname localhost -p 3306:3306 --restart always -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=local_schema mysql:8.4\n"
+  - trigger: \run_postgres
+    replace: "sudo docker run --name postgres --hostname localhost -p 5432:5432 --restart always -e POSTGRES_PASSWORD=root_password -d postgres\n"
+  - trigger: \run_redis
+    replace: "sudo docker run --hostname localhost -p 6379:6379 --restart always --name redis redis:latest\n"
+  - trigger: \run_rabbit
+    replace: "sudo docker run --hostname localhost -p 15672:15672 -p 5672:5672 --restart always --name rabbit rabbitmq:management\n"
