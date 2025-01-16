@@ -1,6 +1,8 @@
 matches:
   - trigger: \freeze
     replace: "pip freeze > requirements.txt\n"
+  - trigger: \pip_install
+    replace: "pip install -r requirements.txt\n"
   - trigger: \debug
     replace: "loguru.logger.debug(\"$|$\")"
   - trigger: \desktop
