@@ -21,7 +21,7 @@ matches:
     replace: Появились новые модели, стоит расширить тест.
   - trigger: \5_новые_эндпоинты
     replace: Появились новые эндпоинты, стоит расширить тест.
-  - trigger: \5_кастомные_ограничения
+  - trigger: \5_constraints
     replace: "Не хватает [кастомных ограничений](https://docs.djangoproject.com/en/4.1/ref/models/constraints/#module-django.db.models.constraints)
       на уровне базы:\n\n- Нельзя добавлять несколько подписок на одного и того же
       автора\n- Нельзя подписываться на себя\n"
