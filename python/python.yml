@@ -10,6 +10,6 @@ matches:
   - trigger: \telegram
     replace: "/home/kalitka/Downloads/Telegram Desktop"
   - trigger: \open
-    replace: "json.loads(open(\"/home/kalitka/Downloads/Telegram Desktop/$|$\", 'rb').read())"
+    replace: "json.loads(open(\"$|$\", 'rb').read())"
   - trigger: \write
     replace: "with open($|$f'.json', 'w') as file:\nfile.write(json.dumps(..., ensure_ascii=False))"
