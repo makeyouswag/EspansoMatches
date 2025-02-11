@@ -12,6 +12,6 @@ matches:
   - trigger: \open
     replace: "json.loads(open(\"$|$\", 'rb').read())"
   - trigger: \write
-    replace: "with open($|$f'.json', 'w') as file:\nfile.write(json.dumps(..., ensure_ascii=False))"
+    replace: "with open($|$f'.json', 'w') as file:\n    loguru.logger.debug(f'Writing to {file.name}')\n    file.write(json.dumps(..., ensure_ascii=False))"
   - trigger: \tqdm
     replace: "tqdm($|$, file=open(os.devnull, 'w'))"
