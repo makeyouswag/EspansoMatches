@@ -13,3 +13,5 @@ matches:
     replace: "json.loads(open(\"$|$\", 'rb').read())"
   - trigger: \write
     replace: "with open($|$f'.json', 'w') as file:\nfile.write(json.dumps(..., ensure_ascii=False))"
+  - trigger: \tqdm
+    replace: "tqdm($|$, file=open(os.devnull, 'w'))"
