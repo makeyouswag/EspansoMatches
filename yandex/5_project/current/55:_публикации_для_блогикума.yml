@@ -71,3 +71,11 @@ matches:
     replace: "Лишний промежуточный класс менеджера. Чтобы объявить `QuerySet()` в
       качестве менеджера модели, достаточно прописать \n\n```python\nclass CustomModel(...):\n
       \t...\n\tobjects = CustomQuerySet().as_manager()\n```"
+  - trigger: \5__reverse_published
+    replace: "
+    Метод кастомного QS, объявленный для фильтрации опубликованных постов, доступен и через обратные отношения:\n\n
+    
+    ```python\n
+    location.posts.published()  # Опубликованные посты в локации\n
+    ```\n
+    "
