@@ -277,3 +277,5 @@ matches:
   - trigger: \httpstatus
     replace: Вместо численных значений кодов ответов стоит использовать атрибуты класса
       HTTPStatus [библиотеки http](https://docs.python.org/3/library/http.html)
+  - trigger: \dict_comprehension
+    replace: "Нужно воспользоваться [словарным включением](https://www.geeksforgeeks.org/python-dictionary-comprehension/)"

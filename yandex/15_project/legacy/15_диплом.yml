@@ -48,15 +48,15 @@ matches:
       \t\t|- serializers.py\n
       \t\t|- urls.py\n
       \t\t|- views.py\n
-      \t|- ... # И так делать для каждой сущности
-      |- urls.py  # Общий маршрутизатор API\n
-      |- ... # И прочие приблуды для апи \n
+      \t|- ... # И так делать для каждой сущности\n
+      \t|- urls.py  # Общий маршрутизатор API\n
+      \t|- ... # И прочие приблуды для апи \n
       |- recipes  # Слой моделей\n
       \t|- apps.py\n
-      \t|- admin.py  # Спорный момент, т.к. админка это однозначно слой отображения\n
+      \t|- admin.py\n
       \t|- models.py\n
       \t|- validators.py\n
-      \t|- ...
+      \t|- ...\n
       |- users  # Слой моделей\n
       \t|- apps.py\n
       \t|- admin.py\n

@@ -5,6 +5,8 @@ matches:
     replace: "pip install -r requirements.txt\n"
   - trigger: \debug
     replace: "loguru.logger.debug(f\"$|$\")"
+  - trigger: \info
+    replace: "loguru.logger.info(f\"$|$\")"
   - trigger: \desktop
     replace: "/home/kalitka/Desktop"
   - trigger: \telegram
