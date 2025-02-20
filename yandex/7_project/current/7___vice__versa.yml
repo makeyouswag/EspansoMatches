@@ -232,3 +232,11 @@ matches:
     ---\n
     Нужно отправлять на API. Тест не проверяет работу эндпоинта
     "
+  - trigger: \7_generator_bulk_create
+    replace: "
+    `.bulk_create()` принимает в качестве аргумента итерируемый объект с моделями, следовательно, в него можно пробросить генератор:
+    \n\n
+    ```python
+    \nModel.objects.bulk_create(Model(**params) for params in N)
+    ```
+    "
