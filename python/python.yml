@@ -7,6 +7,10 @@ matches:
     replace: "loguru.logger.debug(f\"$|$\")"
   - trigger: \info
     replace: "loguru.logger.info(f\"$|$\")"
+  - trigger: \error
+    replace: "loguru.logger.error(f\"$|$\")"
+  - trigger: \warning
+    replace: "loguru.logger.warning(f\"$|$\")"
   - trigger: \desktop
     replace: "/home/kalitka/Desktop"
   - trigger: \telegram
