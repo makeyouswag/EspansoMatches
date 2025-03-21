@@ -29,3 +29,5 @@ matches:
   - trigger: \8_filter
     replace: "Допустимы следующие варианты реализации фильтраций:\n\n- Через SearchFilterBackend\n
       - Через django_filter\n"
+  - trigger: \8_via_permission
+    replace: "Лишняя ручная проверка на контроллере. Нужно реализовать через пермишен."

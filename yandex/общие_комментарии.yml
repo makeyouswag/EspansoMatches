@@ -1,5 +1,5 @@
 matches:
-  - trigger: \импорты
+  - trigger: \imports
     replace: "Импорты должны быть сгруппированы в следующем порядке:\n\n- Импорты
       из стандартной библиотеки\n- Импорты сторонних библиотек\n- Импорты модулей
       текущего проекта\n\n**После каждой группы импортов должна стоять пустая строка.**\n
@@ -7,7 +7,7 @@ matches:
       по алфавиту. \n**Цель**: тратить меньше времени на поиск импортов. Когда кодовая
       база вырастет, этот приём будет экономить время при чтении.\n\n*Примечание:
       В Pycharm для оптимизации импортов есть отдельный шорткат*"
-  - trigger: \маппинги
+  - trigger: \mapping_naming
     replace: "Можно называть маппинги по формуле `<something>_to_<something>`:\n\n\
       ```\nself.routes_to_templates\nили\nself.routes_to_templates_mapping\n```\n"
   - trigger: \экземпляр
@@ -30,7 +30,7 @@ matches:
       размера (все 2 пробела).\n\nК тегам Джанго это тоже относится: внутри `{% блоков
       %}`, циклов, if-ов и менеджеров контекста должны быть такие же сдвиги.\n\nВ
       Pycharm код можно отформатировать [с помощью сочетания клавиш](https://www.jetbrains.com/help/pycharm/reformat-and-rearrange-code.html).\n"
-  - trigger: \_gs
+  - trigger: \gs
     replace: "Хороший старт!\n\nЕсли нужно прояснить моменты - пиши мне в Пачку."
   - trigger: \naming
     replace: "Правила именования:\n\n- Только английский язык. Транслит (translit)
@@ -58,10 +58,6 @@ matches:
       \nПример использования related_name для выдачи постов в локации:\n\n```python\n
       def location_posts(loc_id: int):\n    location: Location = get_object_or_404(Location,
       id=loc_id)\n    # location posts\n    return location.posts.all()\n```"
-  - trigger: \разнести
-    replace: "Стоит разнести объявление атрибутов по разным строкам.\n\nПочему:\n\n
-      - Системы контроля версий плохо справляются с множеством изменений в одних и
-      тех же строках\n- Набор атрибутов будет проще читаться"
   - trigger: \shrug
     replace: ¯\_(ツ)_/¯
   - trigger: \installed_apps
@@ -93,7 +89,7 @@ matches:
       таких как:\n\n- [flake8](https://pypi.org/project/flake8/)\n- [pylint](https://pypi.org/project/pylint/)"
   - trigger: \лпс
     replace: Лишняя пустая строка.
-  - trigger: \капс
+  - trigger: \caps
     replace: "Константы пишем капсом.\n\n"
   - trigger: \print
     replace: "Отладочные принты удаляем.\n\n
@@ -114,7 +110,7 @@ matches:
       называются магическими. Они не объясняют свою смысловую нагрузку и вносят дополнительную
       путаницу при внесении изменений.\n\nКонстанты объявляем на уровне модуля после
       объявления импортов и записываем их капсом."
-  - trigger: \префикс
+  - trigger: \prefix
     replace: Лишний префикс `$|$`.
   - trigger: \оформить_модели
     replace: "Модели не хватает описания:
@@ -150,12 +146,12 @@ matches:
       отношению](https://stackoverflow.com/questions/17328910/django-what-is-reverse-relationship).
   - trigger: \повтор
     replace: "Повтор. \n\nСмотри заметку на строке "
-  - trigger: \коммент
+  - trigger: \comment
     replace: "Подобные комментарии засоряют кодовую базу и могут привести к путанице.
       \n\nРекомендую держать кодовую базу основной ветки в чистовом виде."
   - trigger: \unique
     replace: Не хватает ограничения уникальности пары "$|$"-"".
-  - trigger: \порядок_атрибутов
+  - trigger: \attribute_order
     replace: "Рекомендую следующий порядок атрибутов в моделях Django.\n\n1. Отношения
       Foreign Key, One-to-One, и Many-to-Many (Название происходит от англ. relation,
       от него, в свою очередь, происходит такой термин как \"реляционная модель\"
@@ -171,14 +167,14 @@ matches:
     replace: '`$|$()`'
   - trigger: \.
     replace: '`.$|$()`'
-  - trigger: \_ch
+  - trigger: \line
     replace: 'Смотри заметку на строке $|$.'
-  - trigger: \встроенным
+  - trigger: \builtin
     replace: "Настоятельно рекомендую сначала искать [подходящие встроенные исключения](https://docs.python.org/3/library/exceptions.html#exception-hierarchy),
       прежде чем создавать или импортировать кастомные.\n\nСторонний разработчик сможет
       отлавливать подобные исключения на лету, т.е.без импорта сторонних библиотек
       или модулей."
-  - trigger: \докстринг
+  - trigger: \docstring
     replace: 'Описание работы компонента, а также комментарии к коду рекомендую фиксировать
       в [докстрингах](https://peps.python.org/pep-0257/). '
   - trigger: \множественное_присваивание
@@ -191,7 +187,7 @@ matches:
     replace: Принято.
   - trigger: \__5
     replace: Отлично!
-  - trigger: \_denied
+  - trigger: \denied
     replace: "Остались правки. Если нужно прояснить моменты - пиши в Пачку. Там же предупреждай о железных дедлайнах, если они близко."
   - trigger: \black
     replace: "Чтобы снять головную боль с ручного форматирования кода, рекомендую
@@ -231,7 +227,7 @@ matches:
   - trigger: \list_comprehension
     replace: "Стоит воспользоваться [списковым включением](https://habr.com/ru/companies/wunderfund/articles/687520/).\n
       \nОни читаются лучше, чем циклы."
-  - trigger: \_(c)
+  - trigger: \(c)
     replace: ©
   - trigger: \код_читается_чаще
     replace: '"Код читается много чаще, чем пишется" © Ти Мли Ды, знаменитый китайский
