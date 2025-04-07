@@ -1,0 +1,3 @@
+matches:
+  - trigger: \celery
+    replace: "celery -A pti worker --loglevel=info -E"

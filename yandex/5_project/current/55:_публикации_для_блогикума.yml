@@ -65,8 +65,7 @@ matches:
       \tdef filter_reversed_relationship(self, object):\n\t\treturn object.models.filtered()\n\
       \n```"
   - trigger: \5__select_related
-    replace: '`.select_related()` также стоит вынести в метод фильтраци кастомного
-      QS.'
+    replace: '`.select_related()` также стоит вынести в отдельный метод кастомного QS.'
   - trigger: \5__as_manager
     replace: "Лишний промежуточный класс менеджера. Чтобы объявить `QuerySet()` в
       качестве менеджера модели, достаточно прописать \n\n```python\nclass CustomModel(...):\n

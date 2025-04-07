@@ -1,0 +1,8 @@
+matches:
+  - trigger: 19_services
+    replace: "Бизнес-логику проектов рекомендую располагать в пакете services. 
+    В текущей конфигурации в него нужно собрать пакеты crud и utils.
+    "
+  - trigger: 19_schemas
+    replace: "Схемы обычно принадлежат слою АПИ -
+    они представляют собой слой View в [MVC](https://www.geeksforgeeks.org/mvc-design-pattern/)"
